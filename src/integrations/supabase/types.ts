@@ -14,16 +14,78 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      product_access: {
+        Row: {
+          created_at: string
+          expires_at: string | null
+          external_reference: string | null
+          id: string
+          product_id: string
+          source: string | null
+          status: Database["public"]["Enums"]["access_status"]
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          expires_at?: string | null
+          external_reference?: string | null
+          id?: string
+          product_id?: string
+          source?: string | null
+          status?: Database["public"]["Enums"]["access_status"]
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          expires_at?: string | null
+          external_reference?: string | null
+          id?: string
+          product_id?: string
+          source?: string | null
+          status?: Database["public"]["Enums"]["access_status"]
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_product_access: {
+        Args: { _product_id?: string; _user_id: string }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      access_status: "active" | "inactive" | "refunded" | "cancelled"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +212,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      access_status: ["active", "inactive", "refunded", "cancelled"],
+    },
   },
 } as const
