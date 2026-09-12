@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import heroImg from "@/assets/hero.jpg";
 import { encontros } from "@/data/encontros";
 
@@ -59,12 +59,12 @@ function Index() {
               >
                 Abrir a carta
               </a>
-              <a
-                href="#checklist"
+              <Link
+                to="/auth"
                 className="rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
               >
-                Checklist da noite
-              </a>
+                Entrar na minha conta
+              </Link>
             </div>
           </div>
           <figure className="relative">
